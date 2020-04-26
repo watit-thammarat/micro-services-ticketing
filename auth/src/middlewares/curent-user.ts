@@ -9,7 +9,7 @@ interface UserPayload {
 declare global {
   namespace Express {
     interface Request {
-      currentUser?: UserPayload;
+      currentUser?: UserPayload | null;
     }
   }
 }
@@ -19,6 +19,7 @@ export const currentUser = (
   res: Response,
   next: NextFunction
 ) => {
+  req.currentUser = null;
   if (!req.session?.jwt) {
     return next();
   }

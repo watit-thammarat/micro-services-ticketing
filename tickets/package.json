@@ -1,5 +1,5 @@
 {
-  "name": "auth",
+  "name": "tickets",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -29,6 +29,7 @@
     "express-validator": "^6.4.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.10",
+    "node-nats-streaming": "^0.2.6",
     "ts-node-dev": "^1.0.0-pre.44",
     "typescript": "^3.8.3"
   },

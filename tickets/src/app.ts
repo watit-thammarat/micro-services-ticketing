@@ -2,12 +2,12 @@ import express from 'express';
 import 'express-async-errors';
 import { json } from 'body-parser';
 import cookieSession from 'cookie-session';
-import { errorHandler, NotFoundError } from '@thammarat/common';
+import { errorHandler, NotFoundError, currentUser } from '@thammarat/common';
 
-import { currentUserRouter } from './routes/current-user';
-import { signoutRouter } from './routes/signout';
-import { signupRouter } from './routes/signup';
-import { signinRouter } from './routes/signin';
+import { createTicketRouter } from './routes/new';
+import { showTicketRouter } from './routes/show';
+import { listTicketRouter } from './routes';
+import { updateTicketRouter } from './routes/update';
 
 const app = express();
 
@@ -19,11 +19,13 @@ app.use(
     secure: process.env.NODE_ENV !== 'test',
   })
 );
+app.use(currentUser);
 
-app.use(currentUserRouter);
-app.use(signoutRouter);
-app.use(signupRouter);
-app.use(signinRouter);
+app.use(showTicketRouter);
+app.use(listTicketRouter);
+app.use(createTicketRouter);
+app.use(updateTicketRouter);
+
 app.all('*', async () => {
   throw new NotFoundError();
 });

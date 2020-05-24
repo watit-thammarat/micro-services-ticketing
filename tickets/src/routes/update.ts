@@ -5,6 +5,7 @@ import {
   requireAuth,
   NotAuthorizedError,
   NotFoundError,
+  BadRequestError,
 } from '@thammarat/common';
 
 import { Ticket } from '../models/ticket';
@@ -31,11 +32,16 @@ router.put(
     if (ticket.userId !== req.currentUser!.id) {
       throw new NotAuthorizedError();
     }
+    if (ticket.orderId) {
+      console.log(ticket.orderId);
+      throw new BadRequestError('Cannot edit a reserved ticket');
+    }
     const { title, price } = req.body;
     ticket.set({ title, price });
     await ticket.save();
     new TicketUpdatedPublisher(natsWrapper.client).publish({
       id: ticket.id,
+      version: ticket.version,
       title: ticket.title,
       price: ticket.price,
       userId: ticket.userId,

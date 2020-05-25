@@ -18,7 +18,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@thammarat/common": "^1.0.20",
+    "@thammarat/common": "^1.0.21",
     "@types/bull": "^3.13.0",
     "bull": "^3.14.0",
     "node-nats-streaming": "^0.2.6",

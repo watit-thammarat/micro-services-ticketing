@@ -8,6 +8,4 @@ run npm install
 
 copy . .
 
-run npm run build
-
 cmd ["npm", "run", "dev"]

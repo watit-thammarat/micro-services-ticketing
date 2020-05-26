@@ -4,6 +4,7 @@ import { app } from './app';
 
 const start = async () => {
   try {
+    //comment
     if (!process.env.JWT_KEY) {
       throw new Error('JWT_KEY must be defined');
     }

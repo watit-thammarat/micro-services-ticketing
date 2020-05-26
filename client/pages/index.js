@@ -1,6 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 
+//comment1
+
 const LandingPage = ({ currentUser, tickets }) => {
   const ticketList = tickets.map((t) => (
     <tr key={t.id}>

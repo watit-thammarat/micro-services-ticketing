@@ -7,6 +7,7 @@ import { OrderCancelListener } from './events/listeners/order-cancel-listener';
 
 const start = async () => {
   try {
+    //comment
     if (!process.env.JWT_KEY) {
       throw new Error('JWT_KEY must be defined');
     }

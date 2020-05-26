@@ -3,6 +3,7 @@ import { OrderCreatedListener } from './events/listeners/order-created-listener'
 
 const start = async () => {
   try {
+    //comment
     if (!process.env.NATS_URL) {
       throw new Error('NATS_URL must be defined');
     }
